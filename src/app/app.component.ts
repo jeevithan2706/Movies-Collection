@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
-import 'bootstrap/dist/js/bootstrap.bundle';
+
 
 @Component({
   selector: 'app-root',
@@ -24,7 +24,7 @@ export class AppComponent {
   totalPages: number = 0;
 
   ngOnInit() {
-    // this.searchMovies();
+    this.searchMovies();
   }
 
   searchMovies() {

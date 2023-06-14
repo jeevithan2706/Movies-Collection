@@ -1,12 +1,12 @@
 <!-- movie-search.component.html -->
 <div class="container">
-  <div class="fixed-top bg-body-secondary py-1">
+  <div class="fixed-top bg-body-secondary">
     <div class="text-center">
       <h2>Search Movies</h2>
     </div>
     <div class="row justify-content-between align-items-center">
       <div class="col-md-6 offset-md-3">
-        <div class="input-group mt-2">
+        <div class="input-group">
           <input type="text" [(ngModel)]="searchQuery" (input)="searchMovies()" placeholder="Enter movie name"
             class="form-control">
           <div class="input-group-append">
@@ -16,7 +16,7 @@
             </button>
             <div class="dropdown">
               <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownButton">
-                <div class="px-3 py-2 ">
+                <div class="px-3 py-2">
                   <h6>Language</h6>
                   <div class="d-flex">
                     <mat-checkbox value="tamil" [(ngModel)]="languageValues.ta">Tamil</mat-checkbox>
@@ -64,62 +64,55 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container mt-1">
       <div class="row">
         <div class="col-md-12">
           <ul class="pagination justify-content-center">
-            <li class="page-item" [class.disabled]="currentPage === 1">
-              <a class="page-link" href="#" (click)="loadPage(1)">First</a>
+            <li class="page-item" [class.disabled]="currentPage === 1" (click)="loadPage(1)">
+              <a class="page-link">First</a>
             </li>
-            <li class="page-item" [class.disabled]="currentPage === 1">
-              <a class="page-link" href="#" (click)="loadPage(currentPage - 1)">Previous</a>
+            <li class="page-item" [class.disabled]="currentPage === 1" (click)="loadPage(currentPage - 1)">
+              <a class="page-link">Previous</a>
             </li>
-            <li class="page-item" *ngIf="currentPage > 2">
-              <a class="page-link" href="#" (click)="loadPage(currentPage - 2)">{{ currentPage - 2 }}</a>
+            <li class="page-item" *ngIf="currentPage > 2" (click)="loadPage(currentPage - 2)">
+              <a class="page-link">{{ currentPage - 2 }}</a>
             </li>
-            <li class="page-item" *ngIf="currentPage > 1">
-              <a class="page-link" href="#" (click)="loadPage(currentPage - 1)">{{ currentPage - 1 }}</a>
+            <li class="page-item" *ngIf="currentPage > 1" (click)="loadPage(currentPage - 1)">
+              <a class="page-link">{{ currentPage - 1 }}</a>
             </li>
-            <li class="page-item active">
-              <a class="page-link" href="#" (click)="loadPage(currentPage)">{{ currentPage }}</a>
+            <li class="page-item active" (click)="loadPage(currentPage)">
+              <a class="page-link">{{ currentPage }}</a>
             </li>
-            <li class="page-item" *ngIf="currentPage < totalPages">
-              <a class="page-link" href="#" (click)="loadPage(currentPage + 1)">{{ currentPage + 1 }}</a>
+            <li class="page-item" *ngIf="currentPage < totalPages" (click)="loadPage(currentPage + 1)">
+              <a class="page-link">{{ currentPage + 1 }}</a>
             </li>
-            <li class="page-item" *ngIf="currentPage < totalPages - 1">
-              <a class="page-link" href="#" (click)="loadPage(currentPage + 2)">{{ currentPage + 2 }}</a>
+            <li class="page-item" *ngIf="currentPage < totalPages - 1" (click)="loadPage(currentPage + 2)">
+              <a class="page-link">{{ currentPage + 2 }}</a>
             </li>
-            <li class="page-item" [class.disabled]="currentPage === totalPages">
-              <a class="page-link" href="#" (click)="loadPage(currentPage + 1)">Next</a>
+            <li class="page-item" [class.disabled]="currentPage === totalPages" (click)="loadPage(currentPage + 1)">
+              <a class="page-link">Next</a>
             </li>
-            <li class="page-item" [class.disabled]="currentPage === totalPages">
-              <a class="page-link" href="#" (click)="loadPage(totalPages)">Last</a>
+            <li class="page-item" [class.disabled]="currentPage === totalPages" (click)="loadPage(totalPages)">
+              <a class="page-link">Last</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    
   </div>
 
-  <div class="container py-2" style="margin-top: 90px;">
+  <div class="container py-4" style="margin-top: 130px;">
     <div class="row mt-5 justify-content-center">
       <div class="col-md-10">
         <div class="row">
-          <div class="col-md-4" *ngFor="let movie of movies">
-            <div class="card custom-card mb-3">
-              <div class="row no-gutters">
-                <div class="col-md-12">
-                  <img [src]="getImageUrl(movie.poster_path)" alt="Movie Poster" class="card-img">
-                </div>
-                <div class="col-md-12">
-                  <div class="card-body">
-                    <h5 class="card-title fw-bold fs-4 lh-sm">{{ movie.title }}</h5>
-                    <p class="card-text">Release Date: {{ movie.release_date }}</p>
-                    <div class="rating">
-                      <span class="star" *ngFor="let star of getStars(movie.vote_average)">&#9733;</span>
-                    </div>
-                  </div>
+          <div class="col-md-3" *ngFor="let movie of movies">
+            <div class="card custom-card mb-3" style="width: 14rem;">
+              <img [src]="getImageUrl(movie.poster_path)" alt="Movie Poster" class="card-img-top" style="max-height: 300px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title fw-bold fs-5">{{ movie.title }}</h5>
+                <p class="card-text">Release Date: {{ movie.release_date }}</p>
+                <div class="rating">
+                  <span class="star" *ngFor="let star of getStars(movie.vote_average)">&#9733;</span>
                 </div>
               </div>
             </div>
