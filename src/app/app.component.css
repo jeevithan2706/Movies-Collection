@@ -1,0 +1,14 @@
+.custom-card {
+  height: 650px;
+}
+
+.dropdown-menu-custom {
+  right: 0;
+  left: auto;
+}
+
+
+.page-link {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
