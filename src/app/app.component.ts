@@ -12,7 +12,7 @@ export class AppComponent {
 
   searchQuery!: string;
   movies: any[] = [];
-  selectedFilter: string = 'recent';
+  selectedFilter!: string ;
   isDropdownOpen = false;
 
   languageValues: any = {};
@@ -88,10 +88,6 @@ export class AppComponent {
   loadPage(page: number) {
     this.currentPage = page;
     this.searchMovies();
-  }
-
-  getPaginationArray() {
-    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
   }
 
   //To store image url
